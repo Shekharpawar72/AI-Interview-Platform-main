@@ -152,7 +152,7 @@ const HowItWork = () => {
     <section className="min-h-screen bg-gradient-to-r from-[#0b0f14] via-[#0b0f14] to-[#0a0e14] text-white">
       <div className="max-w-6xl mx-auto px-4 pt-16 text-center">
 
-        {/* 🔹 Heading with horizontal lines */}
+        {/* 🔹 Heading with horizontal lines dsadas */}
         <div className="flex items-center justify-center gap-4 mb-6">
           <span className="w-20 md:w-42 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent"></span>
 
