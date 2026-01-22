@@ -15,17 +15,18 @@ export default function AIInterviewRules() {
   const { questions, duration, sessionId } = location.state || { questions: [], duration: 30, sessionId: null };
 
   const rules = [
-    "Camera must be on throughout the interview.",
-    "Microphone should remain active for clear responses.",
-    "Ensure stable internet connection.",
-    "Use a laptop or desktop device.",
-    "Choose a quiet, distraction-free location.",
-    "Make sure your face is clearly visible.",
-    "Avoid background movements.",
-    "Do not switch tabs or applications.",
-    "No external help or devices allowed.",
-    "No chatting, calling, or messaging.",
-    "Keep your face in the camera frame."
+   "Camera must be on throughout the interview.",
+"Microphone should remain active for clear responses.",
+"Ensure a stable internet connection.",
+"The interview must be taken only on a laptop or desktop device (mobile phones are not allowed).",
+"Choose a quiet, distraction-free location.",
+"Make sure your face is clearly visible.",
+"Avoid background movements.",
+"Do not switch tabs or applications.",
+"No external help or devices allowed.",
+"No chatting, calling, or messaging.",
+"Keep your face within the camera frame at all times."
+
   ];
 
   const requestCameraAndMic = async () => {
@@ -67,7 +68,7 @@ export default function AIInterviewRules() {
         <div className="flex-1  rounded-2xl   p-10 flex flex-col justify-between ">
           <div> 
             <h1 className="text-4xl font-extrabold text-white mb-4">Interview <span className="text-blue-500">Rules</span></h1>
-            <ul className="list-disc pl-6 space-y-2 text-gray-300">
+            <ul className="list-disc pl-6 space-y-2 text-white">
               {rules.map((rule, index) => (
                 <li key={index} className="leading-relaxed">{rule}</li>
               ))}

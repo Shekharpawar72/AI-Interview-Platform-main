@@ -15,7 +15,7 @@ import FAQ from "../components/custom/Fqs";
 import Footer from "../components/custom/Footer";
 import { ImMoveUp } from "react-icons/im";
 import UserStats from "../components/custom/Userstats";
-import TestModeBanner from "../components/TestModelBanner";
+// import TestModeBanner from "../components/TestModelBanner";
 import ContactUS from "../components/custom/ContactUs";
 
 
@@ -50,7 +50,7 @@ const Home = () => {
     <div className="min-h-screen bg-gradient-to-r from-[#0b0f14] via-[#0b0f14] to-[#0a0e14] text-white overflow-x-hidden">
       {/* Navbar fixed */}
       <Navbar className="fixed top-0 left-0 w-full z-50 bg-[#0b0f14]/80 backdrop-blur-md shadow-md" />
-       <TestModeBanner/>
+       {/* <TestModeBanner/> */}
       {/* Hero Section */}
       <div className=" max-w-full mx-auto px-6 md:px-8 lg:px-10 py-20 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-52 items-center  overflow-hidden">
         {/* max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center  */}

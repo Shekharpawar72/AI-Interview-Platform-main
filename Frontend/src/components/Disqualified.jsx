@@ -10,7 +10,7 @@ export default function Disqualified() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-800 flex flex-col items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center max-w-md w-full">
         <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-red-100">
           <ShieldX className="h-12 w-12 text-red-600" />

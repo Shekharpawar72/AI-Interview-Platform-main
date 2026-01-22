@@ -106,7 +106,7 @@ function Signin({ onToggle }) {
     <div className="min-h-screen flex items-center justify-center  opacity-75 text-white relative">
       <div className="absolute inset-0  opacity-30"></div>
 
-      <div className="relative shadow-2xs shadow-blue-500 border border-white/10 bg-gradient-to-r from-[#0b0f14] via-[#0b0f14] to-[#0a0e14] w-[90%] max-w-md rounded-2xl  p-6">
+      <div className="relative  shadow-[0_0_25px_rgba(59,130,246,0.9)] border border-white/10 bg-gradient-to-r from-[#0b0f14] via-[#0b0f14] to-[#0a0e14] w-[90%] max-w-md rounded-2xl  p-6">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex space-x-2 bg-[#2a2a2a] rounded-full p-1">
@@ -135,26 +135,18 @@ function Signin({ onToggle }) {
             )}
           </div>
 
-          {/* Password with Show/Hide */}
-          <div className="relative">
+         
+
+
+           <div>
             <input
-              type={showPassword ? "text" : "password"}
+              type="password"
               name="password"
               placeholder="Password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full bg-[#2a2a2a] p-3 pr-16 rounded-md outline-none placeholder:text-gray-400"
+              className="w-full bg-[#2a2a2a] p-3 rounded-md outline-none placeholder:text-gray-400"
             />
-            <button
-              type="button"
-              onClick={() => setShowPassword((v) => !v)}
-              className="absolute top-1/2 right-3 -translate-y-1/2 p-1 rounded-md hover:opacity-90 focus:outline-none focus:ring"
-              aria-label={showPassword ? "Hide password" : "Show password"}
-              title={showPassword ? "Hide password" : "Show password"}
-            >
-              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}{" "}
-              {/* ✅ icon only */}
-            </button>
             {errors.password && (
               <p className="text-red-400 text-sm mt-1">{errors.password}</p>
             )}
@@ -190,7 +182,8 @@ function Signin({ onToggle }) {
     {/* --- Forgot Password Modal --- */}
       {isForgotModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-          <div className="bg-[#1E1E1E] p-8 rounded-2xl shadow-xl w-[90%] max-w-md">
+        
+          <div className="bg-[#1E1E1E] p-8 rounded-2xl  w-[90%] max-w-md shadow-[0_0_25px_rgba(59,130,246,0.9)]">
             <h3 className="text-xl font-semibold mb-4">Reset Password</h3>
             <p className="text-gray-400 mb-6">Enter your email address and we will send you an OTP to reset your password.</p>
             <form onSubmit={handleForgotPassword}>

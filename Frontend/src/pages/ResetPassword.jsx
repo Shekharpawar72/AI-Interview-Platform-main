@@ -83,9 +83,9 @@ const ResetPassword = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-black text-white relative">
+        <div className="min-h-screen flex items-center justify-center bg-black text-white relative ">
             <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-purple-900 opacity-30"></div>
-            <div className="relative z-10 bg-[#1E1E1E] w-[90%] max-w-md rounded-2xl shadow-xl p-8">
+            <div className="relative z-10 bg-[#1E1E1E] w-[90%] max-w-md rounded-2xl  p-8 shadow-[0_0_25px_rgba(59,130,246,0.9)]">
                 <h2 className="text-2xl font-bold mb-2 text-center">Reset Your Password</h2>
                 <p className="text-center text-gray-400 mb-6">An OTP has been sent to <strong>{email}</strong>.</p>
                 <form onSubmit={handleSubmit} className="space-y-4">
