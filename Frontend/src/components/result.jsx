@@ -1,11 +1,12 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import FeedbackForm from './FeedbackForm';
 
 export default function Result() {
   const location = useLocation();
   const navigate = useNavigate();
   const { feedback } = location.state || { feedback: null };
-
+ 
   if (!feedback) {
     return (
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
@@ -81,7 +82,7 @@ export default function Result() {
         
         <div className="text-center mt-8">
             <button
-                onClick={() => navigate('/')} // Navigate to home or another interview setup page
+                onClick={() => navigate('/feedback')} // Navigate to home or another interview setup page
                 className="bg-blue-500 text-white px-8 py-2 rounded-lg hover:bg-blue-600 transition-colors"
             >
                 Try Another Interview
