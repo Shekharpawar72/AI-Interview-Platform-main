@@ -47,49 +47,165 @@
 
 
 
+// import express from "express";
+// import cors from "cors";
+// import 'dotenv/config';
+// import cookieParser from "cookie-parser";
+// import connectDB from "./config/mongodb.js";
+// import authRouter from  './routes/authroutes.js';
+// import userRouter from "./routes/userRoutes.js";
+// import interviewRouter from "./routes/interviewroutes.js";
+// import feedbackRoutes from './routes/feedbackroutes.js'; 
+// import contactRouter from "./routes/contactUs.js";
+
+// const app = express();
+// const port = process.env.PORT || 4000;
+// connectDB();
+
+// const allowedOrigins = [
+//   'http://localhost:5173', // local dev
+//   // 'https://ai-interview-platform-frontend.onrender.com' // deployed frontend
+// ];
+
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+//   credentials: true,
+// }));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// app.use(cookieParser());
+
+// // API Endpoints
+// app.get('/' , (req , res)=> res.send("API is working"));
+// app.use('/api/auth' , authRouter)
+// app.use('/api/user' , userRouter)
+// app.use('/api/interview' , interviewRouter)
+// app.use('/api/feedback' , feedbackRoutes)
+// app.use('/api' , contactRouter)
+
+// app.listen(port , ()=> console.log(`Server is running on PORT: ${port}`));
+
+
+//// up[ to date code with pyq questions routes]
+
+// import express from "express";
+// import cors from "cors";
+// import 'dotenv/config';
+// import cookieParser from "cookie-parser";
+// import connectDB from "./config/mongodb.js";
+// import authRouter from  './routes/authroutes.js';
+// import userRouter from "./routes/userRoutes.js";
+// import interviewRouter from "./routes/interviewroutes.js";
+// import feedbackRoutes from './routes/feedbackroutes.js'; 
+// import contactRouter from "./routes/contactUs.js";
+// import pyqQuestionsRoutes from "./routes/pyqQuestionsRoutes.js";
+
+// const app = express();
+// const port = process.env.PORT || 4000;
+// connectDB();
+
+// const allowedOrigins = [
+//   'http://localhost:5173', // local dev
+//   // 'https://ai-interview-platform-frontend.onrender.com' // deployed frontend
+// ];
+
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+//   credentials: true,
+// }));
+
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
+// app.use(cookieParser());
+
+// // API Endpoints
+// app.get('/' , (req , res)=> res.send("API is working"));
+// app.use('/api/auth' , authRouter)
+// app.use('/api/user' , userRouter)
+// app.use('/api/interview' , interviewRouter)
+// app.use('/api/feedback' , feedbackRoutes)
+// app.use('/api' , contactRouter)
+// app.use('/api/questions' , pyqQuestionsRoutes)
+
+// app.listen(port , ()=> console.log(`Server is running on PORT: ${port}`));
+
 import express from "express";
 import cors from "cors";
-import 'dotenv/config';
+import "dotenv/config";
 import cookieParser from "cookie-parser";
+
 import connectDB from "./config/mongodb.js";
-import authRouter from  './routes/authroutes.js';
+
+import authRouter from "./routes/authroutes.js";
 import userRouter from "./routes/userRoutes.js";
 import interviewRouter from "./routes/interviewroutes.js";
-import feedbackRoutes from './routes/feedbackroutes.js'; 
+import feedbackRoutes from "./routes/feedbackroutes.js";
 import contactRouter from "./routes/contactUs.js";
+import pyqQuestionsRoutes from "./routes/pyqQuestionsRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 4000;
+
+// Database Connection
 connectDB();
 
+// Allowed Origins
 const allowedOrigins = [
-  'http://localhost:5173', // local dev
-  // 'https://ai-interview-platform-frontend.onrender.com' // deployed frontend
+  "http://localhost:5173",
+  "http://localhost:5174",
 ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  credentials: true,
-}));
+// CORS Configuration
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true,
+  })
+);
 
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(cookieParser());
 
-// API Endpoints
-app.get('/' , (req , res)=> res.send("API is working"));
-app.use('/api/auth' , authRouter)
-app.use('/api/user' , userRouter)
-app.use('/api/interview' , interviewRouter)
-app.use('/api/feedback' , feedbackRoutes)
-app.use('/api' , contactRouter)
+// Test Route
+app.get("/", (req, res) => {
+  res.send("API is working");
+});
 
-app.listen(port , ()=> console.log(`Server is running on PORT: ${port}`));
+// API Routes
+app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
+app.use("/api/interview", interviewRouter);
+app.use("/api/feedback", feedbackRoutes);
+app.use("/api", contactRouter);
+app.use("/api/questions", pyqQuestionsRoutes);
+
+// Server Start
+app.listen(port, () => {
+  console.log(`Server is running on PORT: ${port}`);
+});

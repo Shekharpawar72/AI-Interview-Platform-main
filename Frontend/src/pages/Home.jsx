@@ -17,6 +17,7 @@ import { ImMoveUp } from "react-icons/im";
 import UserStats from "../components/custom/Userstats";
 // import TestModeBanner from "../components/TestModelBanner";
 import ContactUS from "../components/custom/ContactUs";
+import MostAskedQuestions from "../components/MostAskedQuestions";
 
 
 const Home = () => {
@@ -147,10 +148,11 @@ const Home = () => {
 
       {/* this the Resume checker page  */}
       <ResumeChecker />
+      
       <div className="my-12">
   <UserStats />
 </div>
-
+       <MostAskedQuestions />
       <Team />
       <FAQ />
       <div className="mt-20"> <ContactUS/> </div>

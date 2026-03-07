@@ -20,6 +20,7 @@ import ContactUS from '../components/custom/ContactUs';
 import FeedbackForm from '../components/FeedbackForm';
 
 import AdminAuth from '../components/AdminPanel/AdminAuth';
+import PreviousQuestions from '../pages/PreviousQuestions'
 
 
 export default function AppRouter() {
@@ -49,6 +50,7 @@ export default function AppRouter() {
 
              {/* /// ya pr sare Admin panel ke Routes ha  */}
               <Route path="/admin" element={<AdminAuth />} />
+                <Route path="/previous-questions" element={<PreviousQuestions />} />
 
         </Routes>
     );
