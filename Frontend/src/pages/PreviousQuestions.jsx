@@ -2,19 +2,22 @@ import { useEffect, useState } from "react";
 
 export default function PreviousQuestions() {
   const [data, setData] = useState([]);
+  const [showPopup, setShowPopup] = useState(true);
+  const [searched, setSearched] = useState(false);
+
   const [filters, setFilters] = useState({
     company: "",
     role: "",
-    round: "",
+    round: ""
   });
 
   const fetchQuestions = async () => {
     const params = new URLSearchParams(filters);
-    const res = await fetch(
-      `http://localhost:4000/api/questions?${params}`
-    );
+    const res = await fetch(`http://localhost:4000/api/questions?${params}`);
     const json = await res.json();
+
     setData(json.data || []);
+    setSearched(true);
   };
 
   useEffect(() => {
@@ -22,89 +25,204 @@ export default function PreviousQuestions() {
   }, []);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* Heading */}
-      <h1 className="text-3xl font-bold text-blue-600 mb-8 text-center md:text-left">
-        Previous Asked Questions
-      </h1>
+    <div className="h-screen flex bg-[#0b0f14] text-white">
 
-      {/* Filters Card */}
-      <div className="bg-white shadow-md rounded-xl p-6 mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <input
-            placeholder="Search by company"
-            onChange={(e) =>
-              setFilters({ ...filters, company: e.target.value })
-            }
-            className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+      {/* Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
+          <div className="relative w-[500px] bg-white text-gray-800 rounded-xl shadow-2xl p-8">
 
-          <select
-            onChange={(e) =>
-              setFilters({ ...filters, role: e.target.value })
-            }
-            className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Select Role</option>
-            <option>Tech</option>
-            <option>Non-Tech</option>
-          </select>
+            <button
+              onClick={() => setShowPopup(false)}
+              className="absolute top-3 right-4 text-gray-500 hover:text-black text-xl"
+            >
+              ✕
+            </button>
 
-          <select
-            onChange={(e) =>
-              setFilters({ ...filters, round: e.target.value })
-            }
-            className="border border-gray-300 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Select Round</option>
-            <option>Coding</option>
-            <option>Interview</option>
-          </select>
+            <h2 className="text-2xl font-bold text-blue-600 mb-4">
+              Important Information
+            </h2>
+
+            <p className="text-gray-700 leading-relaxed">
+              These questions are collected from students who have recently attended
+              <b> on-campus placement interviews</b>.
+            </p>
+
+            <p className="text-gray-700 mt-3">
+              More questions will be added regularly as students share their interview experiences.
+            </p>
+
+            <p className="text-gray-700 mt-3">
+              You can refer to these questions <b>before sitting for a company or before your interview round</b>.
+            </p>
+
+            <div className="mt-6 flex justify-end">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg"
+              >
+                Got it
+              </button>
+            </div>
+
+          </div>
         </div>
+      )}
 
-        <button
-          onClick={fetchQuestions}
-          className="mt-5 bg-blue-600 hover:bg-blue-700 transition text-white px-6 py-2 rounded-lg"
-        >
-          Search Questions
-        </button>
+      {/* Sidebar */}
+      <div className="w-80 border-r border-gray-800 bg-[#0f172a] p-6 sticky top-0 h-screen">
+
+        <h2 className="text-2xl font-bold text-blue-500 mb-6">
+          Filters
+        </h2>
+
+        <div className="space-y-5">
+
+          {/* Company */}
+          <div>
+            <label className="text-sm text-gray-400">Company</label>
+
+            <select
+              value={filters.company}
+              onChange={(e) =>
+                setFilters({ ...filters, company: e.target.value })
+              }
+              className="w-full mt-1 bg-[#020617] border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500"
+            >
+              <option value="">Select Company</option>
+              <option>HotWax Systems</option>
+              <option>Hoonartek</option>
+              <option>Systango</option>
+              <option>Zimetrics Technologies</option>
+              <option>GammaEdge Technologies</option>
+              <option>Jaro Education</option>
+            </select>
+          </div>
+
+          {/* Role */}
+          <div>
+            <label className="text-sm text-gray-400">Role</label>
+
+            <select
+              onChange={(e) =>
+                setFilters({ ...filters, role: e.target.value })
+              }
+              className="w-full mt-1 bg-[#020617] border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500"
+            >
+              <option value="">Select Role</option>
+              <option>Tech</option>
+              <option>Non-Tech</option>
+            </select>
+          </div>
+
+          {/* Round */}
+          <div>
+            <label className="text-sm text-gray-400">Round</label>
+
+            <select
+              onChange={(e) =>
+                setFilters({ ...filters, round: e.target.value })
+              }
+              className="w-full mt-1 bg-[#020617] border border-gray-700 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-500"
+            >
+              <option value="">Select Round</option>
+              <option>Coding</option>
+              <option>Interview</option>
+            </select>
+          </div>
+
+          {/* Search */}
+          <button
+            onClick={fetchQuestions}
+            className="w-full mt-4 bg-blue-600 hover:bg-blue-700 transition py-2 rounded-lg font-medium shadow-md"
+          >
+            Search Questions
+          </button>
+
+        </div>
       </div>
 
-      {/* Questions List */}
-      {data.length === 0 ? (
-        <p className="text-center text-gray-500">
-          No questions found. Try changing filters.
-        </p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Questions */}
+      <div className="flex-1 overflow-y-auto p-10">
+
+        <h1 className="text-3xl font-bold text-blue-500 mb-8">
+          Previous Asked Questions
+        </h1>
+
+        <div className="space-y-6">
+
+          {/* No result message */}
+          {searched && data.length === 0 && (
+           <div className="flex justify-center items-center h-[350px]">
+  <div className="text-center bg-[#111827] border border-gray-700 rounded-2xl px-12 py-10 shadow-xl max-w-md">
+
+    <div className="flex justify-center mb-4">
+      <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600/20 border border-blue-500/30">
+        <span className="text-2xl">🔍</span>
+      </div>
+    </div>
+
+    <h2 className="text-2xl font-semibold text-white mb-2">
+      No Results Found
+    </h2>
+
+    <p className="text-gray-400 text-sm leading-relaxed">
+      We couldn't find any questions for the selected filters.
+    </p>
+
+    <p className="text-gray-500 text-sm mt-2">
+      Our database is constantly updating. Please check again soon.
+    </p>
+
+    <div className="mt-6">
+      <button
+        onClick={() => window.location.reload()}
+        className="bg-blue-600 hover:bg-blue-700 transition px-5 py-2 rounded-lg text-sm font-medium shadow-md"
+      >
+        Refresh
+      </button>
+    </div>
+
+  </div>
+</div>
+          )}
+
+          {/* Questions list */}
           {data.map((item) => (
             <div
               key={item._id}
-              className="bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition"
+              className="bg-[#111827] border border-gray-700 rounded-xl p-6 hover:border-blue-500 transition shadow-lg"
             >
-              <div className="flex justify-between items-center mb-2">
-                <h3 className="font-semibold text-lg text-gray-800">
+
+              <div className="flex justify-between items-center mb-3">
+
+                <h3 className="text-xl font-semibold text-blue-400">
                   {item.company}
                 </h3>
-                <span className="text-xs bg-blue-100 text-blue-600 px-3 py-1 rounded-full">
+
+                <span className="text-xs bg-blue-600 px-3 py-1 rounded-full">
                   {item.round}
                 </span>
+
               </div>
 
-              <p className="text-sm text-gray-500 mb-3">
-                Role: <span className="font-medium">{item.role}</span> • Asked{" "}
-                {item.timeRange} ago
+              <p className="text-sm text-gray-400 mb-4">
+                Role: {item.role} • Asked: {item.timeRange} ago
               </p>
 
-              <ul className="list-disc ml-5 space-y-1 text-gray-700">
+              <ul className="list-disc ml-5 space-y-2 text-gray-200">
                 {item.questions.map((q, i) => (
                   <li key={i}>{q}</li>
                 ))}
               </ul>
+
             </div>
           ))}
+
         </div>
-      )}
+
+      </div>
+
     </div>
   );
 }

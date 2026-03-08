@@ -2,25 +2,33 @@ import React, { useState } from "react";
 
 const faqs = [
   {
-    question: "What is AI Interview Platform?",
-    answer:
-      "Our AI Interview Platform helps you prepare for technical and behavioral interviews using AI-powered mock interviews, coding challenges, and feedback.",
-  },
-  {
-    question: "How do I schedule a mock interview?",
-    answer:
-      "You can schedule a mock interview from your dashboard by selecting a date and time convenient for you.",
-  },
-  {
-    question: "Are the coding tests timed?",
-    answer:
-      "Yes, our coding tests are timed to simulate real interview conditions and improve your time management skills.",
-  },
-  {
-    question: "Can I get feedback on my performance?",
-    answer:
-      "Absolutely! After each mock interview or test, AI-generated detailed feedback will help you identify strengths and areas for improvement.",
-  },
+  question: "What is AI Interview Platform?",
+  answer:
+    "Our AI Interview Platform helps you prepare for technical and behavioral interviews using AI-powered mock interviews, coding challenges, and feedback.",
+},
+
+{
+  question: "Are the coding tests timed?",
+  answer:
+    "Yes, our coding tests are timed to simulate real interview conditions and improve your time management skills.",
+},
+{
+  question: "Can I get feedback on my performance?",
+  answer:
+    "Absolutely! After each mock interview or test, AI-generated detailed feedback will help you identify strengths and areas for improvement.",
+},
+
+{
+  question: "Are the coding and interview questions based on recent on-campus placements?",
+  answer:
+    "Yes, many coding and interview questions on our platform are collected from students who recently attended on-campus placement drives in different companies.",
+},
+
+{
+  question: "How frequently are on-campus questions updated?",
+  answer:
+    "We regularly update our database with the most recent coding and interview questions shared by students after their campus placement rounds.",
+},
 ];
 
 const FAQ = () => {

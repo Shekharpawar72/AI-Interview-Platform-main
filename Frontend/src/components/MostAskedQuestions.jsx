@@ -1,7 +1,11 @@
 import React from "react";
 import { CheckCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function MostAskedQuestions() {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <style>
@@ -94,6 +98,7 @@ export default function MostAskedQuestions() {
 
         <div className="relative max-w-7xl mx-auto rounded-3xl gradientBG breathe p-10 md:p-16 shadow-2xl shadow-blue-600 overflow-hidden wave">
           <div className="grid md:grid-cols-2 gap-12 items-center">
+            
             {/* LEFT CONTENT */}
             <div>
               <p className="text-blue-400 text-3xl font-bold uppercase tracking-widest mb-3">
@@ -113,9 +118,9 @@ export default function MostAskedQuestions() {
 
               <div className="space-y-4 mb-10">
                 {[
-                        "Real campus interview questions 🎯",
-  "Company coding rounds 💻",
-  "Latest placement questions 2025 🚀"
+                  "Real campus interview questions 🎯",
+                  "Company coding rounds 💻",
+                  "Latest placement questions 2025 🚀"
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <CheckCircle className="text-blue-500 w-5 h-5" />
@@ -124,13 +129,17 @@ export default function MostAskedQuestions() {
                 ))}
               </div>
 
-              <button className="bg-blue-600 hover:bg-white hover:text-blue-600 transition-all duration-300 px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/60 hover:scale-110 transform">
+              <button
+                onClick={() => navigate("/previous-questions")}
+                className="bg-blue-600 hover:bg-white hover:text-blue-600 transition-all duration-300 px-8 py-4 rounded-full text-lg font-semibold shadow-lg shadow-blue-500/30 hover:shadow-blue-500/60 hover:scale-110 transform"
+              >
                 Explore Questions 🔥
               </button>
             </div>
 
             {/* RIGHT SIDE PREMIUM VISUAL */}
             <div className="hidden md:flex justify-center items-center relative h-[400px] ">
+              
               {/* Rotating Glow Ring */}
               <div className="absolute w-80 h-80 border border-blue-500/30 rounded-full spinSlow "></div>
 
@@ -148,12 +157,15 @@ export default function MostAskedQuestions() {
               <div className="absolute top-5 right-5 bg-blue-600/20 px-4 py-2 rounded-xl backdrop-blur-md border border-blue-500/20 floatSlow">
                 <p className="text-white text-sm">DSA Focus 💻</p>
               </div>
+
               <div className="absolute top-5 right-5 bg-blue-600/20 px-4 py-2 rounded-xl backdrop-blur-md border border-blue-500/20 floatSlow">
                 <p className="text-white text-sm">DSA Focus 💻</p>
               </div>
+
               <div className="absolute bottom-5 left-5 bg-blue-600/20 px-4 py-2 rounded-xl backdrop-blur-md border border-blue-500/20 float">
                 <p className="text-white text-sm">Tech Interview Prep 🎤</p>
               </div>
+
             </div>
           </div>
         </div>
