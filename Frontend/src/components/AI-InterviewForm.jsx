@@ -103,11 +103,11 @@ export default function AIInterviewForm() {
 
   return (
   
-    <div className="min-h-screen bg-gray-900 text-white p-6 flex justify-center items-center">
+    <div className="min-h-screen bg-gradient-to-r from-[#0b0f14] via-[#0b0f14] to-[#0a0e14] text-white p-6 flex justify-center items-center">
       <TravellingLine />
       <form
         onSubmit={handleSubmit}
-        className="bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-3xl space-y-6"
+        className="bg-[#111827] p-8 rounded-2xl   shadow-2xl shadow-blue-700 backdrop-blur-md  w-full max-w-3xl space-y-6"
       >
         <h2 className="text-3xl font-bold text-center text-white">     
           {/* isme lien change ha thoda  <span className="text-blue-500">Screening</span> */}

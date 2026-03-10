@@ -796,7 +796,12 @@ function Signup({ onToggle }) {
     if (!formData.fName.trim())
       newErrors.fName = "First name is required";
     if (!formData.lName.trim()) newErrors.lName = "Last name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
+    // if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.email.trim()) {
+  newErrors.email = "Email is required";
+} else if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/.test(formData.email)) {
+  newErrors.email = "Enter a valid Gmail address (example@gmail.com)";
+}
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone number is required";
     } else if (!/^\d{10}$/.test(formData.phone)) {

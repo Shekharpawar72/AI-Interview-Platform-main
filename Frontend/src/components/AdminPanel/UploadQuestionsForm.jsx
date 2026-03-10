@@ -24,9 +24,53 @@ export default function UploadQuestionsForm() {
     showToast("✅ Questions saved successfully");
   };
 
-  const handleUpload = () => {
+  // const handleUpload = () => {
+  //   // showToast("🚀 Questions uploaded successfully");
+  //   try {
+  //   const payload = {
+  //     company: document.querySelector("select[name='company']").value,
+  //     role: document.querySelector("select[name='role']").value,
+  //     round: document.querySelector("select[name='round']").value,
+  //     timeRange: document.querySelector("select[name='time']").value,
+  //     questions
+  //   };
+
+  //   await fetch("http://localhost:4000/api/questions/upload", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(payload)
+  //   });
+
+  //   showToast("🚀 Questions uploaded successfully");
+  //   setQuestions([""]);
+  // } catch (err) {
+  //   showToast("❌ Upload failed");
+  // }
+
+  // };
+
+  const handleUpload = async () => {
+  try {
+    const payload = {
+      company: document.querySelector("select[name='company']").value,
+      role: document.querySelector("select[name='role']").value,
+      round: document.querySelector("select[name='round']").value,
+      timeRange: document.querySelector("select[name='time']").value,
+      questions
+    };
+
+    await fetch("http://localhost:4000/api/questions/upload", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
     showToast("🚀 Questions uploaded successfully");
-  };
+    setQuestions([""]);
+  } catch (err) {
+    showToast("❌ Upload failed");
+  }
+};
 
   return (
     <>

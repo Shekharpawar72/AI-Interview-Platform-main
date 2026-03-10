@@ -126,6 +126,18 @@ const ResumeScoreChecker = () => {
             </div>
           </header>
            <div className="w-full space-y-3 sm:space-y-4 lg:space-y-6">
+            {/* AI Notice */}
+<div className="max-w-3xl mx-auto mt-4 mb-2 px-4">
+  <div className="bg-yellow-500/10 border border-yellow-500/30 text-yellow-300 text-xs sm:text-sm rounded-lg p-3 flex items-center space-x-2 backdrop-blur-sm">
+    <AlertCircle size={16} className="flex-shrink-0" />
+    <p>
+      This tool uses AI to estimate your ATS score and provide resume optimization suggestions.
+      Results may vary depending on the Applicant Tracking System used by companies.
+    </p>
+  </div>
+</div>
+
+
       {/* Progress Steps */}
       <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4 mb-4 sm:mb-6 lg:mb-8 px-2 sm:px-4">
         <div className={`flex items-center space-x-2 ${resumeFile ? 'text-green-400' : 'text-gray-500'}`}>
