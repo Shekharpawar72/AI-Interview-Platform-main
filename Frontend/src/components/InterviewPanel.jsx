@@ -3,8 +3,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 // Import LoaderCircle for a better user experience
 import { PhoneOff, Mic, MicOff, Volume2, LoaderCircle, ShieldAlert } from "lucide-react";
 import Interviewpanel from "../assets/Interviewpanel.mp4";
+import { AppContext } from "../context/AppContext";
 
 export default function InterviewPanel() {
+  const { backendUrl } = useContext(AppContext);
   const navigate = useNavigate();
   const location = useLocation();
 
