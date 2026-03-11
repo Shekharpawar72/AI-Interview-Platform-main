@@ -46,7 +46,7 @@ function Signin({ onToggle }) {
         credentials: "include", // To allow cookie to be stored
         headers: {
           "Content-Type": "application/json",
-        }
+        },
         body: JSON.stringify(formData),
       });
 
