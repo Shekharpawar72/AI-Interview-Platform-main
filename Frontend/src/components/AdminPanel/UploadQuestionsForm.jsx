@@ -59,7 +59,7 @@ export default function UploadQuestionsForm() {
       questions
     };
 
-    await fetch("http://localhost:4000/api/questions/upload", {
+    await fetch("https://ai-interview-platform-main-backend.onrender.com/api/questions/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
