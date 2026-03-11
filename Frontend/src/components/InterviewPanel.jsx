@@ -249,11 +249,13 @@ export default function InterviewPanel() {
     }
 
     // 5. Perform the API call within a try...catch...finally block for robust error handling.
+    /////api/feedback/${sessionId}/analyze
     try {
       const response = await fetch(
-        `/api/feedback/${sessionId}/analyze`,
+        `${backendUrl}/api/feedback/${sessionId}/analyze`,  
         {
           method: 'POST',
+            credentials: "include",
           headers: {
             'Content-Type': 'application/json',
           },
