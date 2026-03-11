@@ -41,12 +41,12 @@ function Signin({ onToggle }) {
     if (!validate()) return;
 
     try {
-      const response = await fetch(backendUrl + '/api/auth/signin', {
+      const response = await fetch(`${backendUrl}/api/auth/signin`, {
         method: "POST",
         credentials: "include", // To allow cookie to be stored
         headers: {
           "Content-Type": "application/json",
-        },
+        }
         body: JSON.stringify(formData),
       });
 
