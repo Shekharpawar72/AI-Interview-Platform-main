@@ -493,13 +493,15 @@
 
 
 
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
 export default function PreviousQuestions() {
   const [data, setData] = useState([]);
   const [showPopup, setShowPopup] = useState(true);
   const [searched, setSearched] = useState(false);
-
+  const { backendUrl } = useContext(AppContext);
+  
   const [filters, setFilters] = useState({
     company: "",
     role: "",
@@ -508,7 +510,7 @@ export default function PreviousQuestions() {
 
   const fetchQuestions = async () => {
     const params = new URLSearchParams(filters);
-    const res = await fetch(`http://localhost:4000/api/questions?${params}`);
+    const res = await fetch(`${backendUrl}/api/questions?${params}`);
     const json = await res.json();
 
     setData(json.data || []);
